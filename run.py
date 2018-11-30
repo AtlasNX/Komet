@@ -116,45 +116,41 @@ async def on_ready():
         bot.config = config
 
         # channels
-        bot.welcome_channel = discord.utils.get(server.channels, name="newcomers")
-        bot.announcements_channel = discord.utils.get(server.channels, name="news")
-        bot.mods_channel = discord.utils.get(server.channels, name="server-logs")
-        bot.modlogs_channel = discord.utils.get(server.channels, name="server-logs")
-        bot.serverlogs_channel = discord.utils.get(server.channels, name="server-logs")
+        bot.welcome_channel = discord.utils.get(server.channels, name="welcome")
+        bot.announcements_channel = discord.utils.get(server.channels, name="announcements")
+        bot.mods_channel = discord.utils.get(server.channels, name="mod-log")
+        bot.modlogs_channel = discord.utils.get(server.channels, name="mod-log")
+        bot.serverlogs_channel = discord.utils.get(server.channels, name="mod-log")
 
         bot.community_channels = (
-            discord.utils.get(server.channels, name="switch-hacking-general"),
-            discord.utils.get(server.channels, name="homebrew-development"),
-            discord.utils.get(server.channels, name="off-topic"),
-            discord.utils.get(server.channels, name="creative-content"),
-            discord.utils.get(server.channels, name="hardware-mods")
+            discord.utils.get(server.channels, name="developer-chat"),
+            discord.utils.get(server.channels, name="scene-showcase"),
         )
 
         # TODO: remove some of these roles that are useless on Reswitched. need to find their use around the bot first.
         # roles
-        bot.staff_role = discord.utils.get(server.roles, name="mod")
-        bot.halfop_role = discord.utils.get(server.roles, name="hop")
-        bot.op_role = discord.utils.get(server.roles, name="OP")
-        bot.superop_role = discord.utils.get(server.roles, name="moderator")
-        bot.owner_role = discord.utils.get(server.roles, name="wizards")
-        bot.unprobated_role = discord.utils.get(server.roles, name="participant")
+        bot.staff_role = discord.utils.get(server.roles, name="Secmon")
+        bot.halfop_role = discord.utils.get(server.roles, name="Creport")
+        bot.op_role = discord.utils.get(server.roles, name="Creport")
+        bot.superop_role = discord.utils.get(server.roles, name="Creport")
+        bot.owner_role = discord.utils.get(server.roles, name="Secmon")
         bot.muted_role = discord.utils.get(server.roles, name="Muted")
-        bot.nohelp_role = discord.utils.get(server.roles, name="hackers")
+        bot.nohelp_role = discord.utils.get(server.roles, name="Creport")
         bot.nomemes_role = discord.utils.get(server.roles, name="No-Memes")
         bot.noembed_role = discord.utils.get(server.roles, name="No-Embed")
-        bot.team_role = discord.utils.get(server.roles, name="team")
+        bot.team_role = discord.utils.get(server.roles, name="Secmon")
 
-        bot.private_role = discord.utils.get(server.roles, name="private")
-        bot.hacker_role = discord.utils.get(server.roles, name="hacker")
-        bot.community_role = discord.utils.get(server.roles, name="community")
-        bot.bot_management_role = discord.utils.get(server.roles, name='bot management')
+        bot.private_role = discord.utils.get(server.roles, name="Secmon")
+        bot.hacker_role = discord.utils.get(server.roles, name="TSEC")
+        bot.community_role = discord.utils.get(server.roles, name="Jpegdec")
+        bot.bot_management_role = discord.utils.get(server.roles, name='Secmon')
         bot.everyone_role = server.default_role
 
         bot.staff_ranks = {
-            "HalfOP": bot.halfop_role,
-            "OP": bot.op_role,
-            "moderator": bot.superop_role,
-            "Wizards": bot.owner_role,
+            "Creport": bot.halfop_role,
+            "Creport": bot.op_role,
+            "Creport": bot.superop_role,
+            "Secmon": bot.owner_role,
         }
 
         # load timebans
@@ -189,7 +185,6 @@ async def on_ready():
 
 # loads extensions
 addons = [
-    'addons.blah',
     'addons.events',
     'addons.extras',
     'addons.kickban',
@@ -201,9 +196,7 @@ addons = [
     'addons.links',
     'addons.err',
     'addons.nxerr',
-    'addons.things',
-    'addons.mod_warn',
-    'addons.probation_bot'
+    'addons.mod_warn'
 ]
 
 failed_addons = []

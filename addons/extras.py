@@ -18,12 +18,12 @@ class Extras:
     prune_key = "nokey"
 
     @commands.command()
-    async def robocop(self):
+    async def about(self):
         """About the bot"""
-        embed = discord.Embed(title="Robocop", color=discord.Color.green(), url="https://github.com/916253/Kurisu-Reswitched")
+        embed = discord.Embed(title="About:", color=discord.Color.green(), url="https://github.com/AtlasNX/Kurisu-AtlasNX")
         embed.set_author(name="")
         embed.set_thumbnail(url="http://i.imgur.com/0iDmGQa.png")
-        embed.description = "Based off of Kurisu by 916253 and ihaveamac"
+        embed.description = "Based off of Kurisu (ReSwitched Edition) by 916253 and ihaveamac"
         await self.bot.say("", embed=embed)
 
     @commands.command()
@@ -62,14 +62,6 @@ class Extras:
             diff
         )
         await self.bot.say(msg)
-
-    @commands.command(pass_context=True)
-    async def rules(self, ctx, mention_user : discord.Member=None):
-        """Post a link to the Rules"""
-        if mention_user:
-            await self.bot.say("{} Please review this servers rules here: <https://reswitched.team/discord/>".format(mention_user.mention))
-        else:
-            await self.bot.say("{} A link to the rules can be found here: <https://reswitched.team/discord/>".format(ctx.message.author.mention))
 
 def setup(bot):
     bot.add_cog(Extras(bot))

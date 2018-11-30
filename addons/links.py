@@ -12,9 +12,19 @@ class Links:
 
         
     @commands.command()
-    async def pegaswitch(self):
-        """test"""
-        await self.bot.say("http://github.com/reswitched/pegaswitch")
+    async def kosmos(self):
+        """Kosmos"""
+        await self.bot.say("https://github.com/AtlasNX/Kosmos")
 
+    @commands.command()
+    async def guide(self):
+        """Guide"""
+        await self.bot.say("https://guide.teamatlasnx.com")
+
+    @commands.command()
+    async def patreon(self):
+        """Patreon"""
+        await self.bot.say("https://patreon.teamatlasnx.com")
+    
 def setup(bot):
     bot.add_cog(Links(bot))
