@@ -118,8 +118,8 @@ async def on_ready():
         # channels
         bot.welcome_channel = discord.utils.get(server.channels, name="welcome")
         bot.announcements_channel = discord.utils.get(server.channels, name="announcements")
-        bot.mods_channel = discord.utils.get(server.channels, name="mod-log")
-        bot.modlogs_channel = discord.utils.get(server.channels, name="mod-log")
+        bot.mods_channel = discord.utils.get(server.channels, name="mod-chat")
+        bot.modlogs_channel = discord.utils.get(server.channels, name="mod-warnings")
         bot.serverlogs_channel = discord.utils.get(server.channels, name="mod-log")
 
         bot.community_channels = (
