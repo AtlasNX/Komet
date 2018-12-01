@@ -9,3 +9,6 @@ __pycache__
 data/
 venv/
 .idea/
+data.txt
+grabber.py
+data.py
