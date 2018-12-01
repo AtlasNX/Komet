@@ -512,6 +512,16 @@ class NXErr:
         0x4A8: "Userland ARM data abort. Also caused by abnormal process termination via svcExitProcess. Note: directly jumping to nnMain()-retaddr from non-main-thread has the same result.",
         0x6A8: "Userland PC address not aligned to 4 bytes ",
         0x10A8: "Can occur when attempting to call an svc outside the whitelist ",
+
+        # Non-SwitchBrew Error Codes - Should probably add them to SwitchBrew if you read this
+
+        0x7E12B: 'Eshop connection failed - Often because of DNS!',
+        0x39D689: 'CDN ban',
+        0x3E8E7C: 'Account Login/Creation - Often because of DNS!',
+        0x3E8EA0: 'Failed connection test - Often because of DNS!',
+        0x1F4E7C: '(normal) console ban',
+        # 0x3E8E89: 'Failed to access Firmware Updates - Often because of DNS!',
+        # ^ Also used by libcurl
     }
 
     known_errcode_ranges = {
