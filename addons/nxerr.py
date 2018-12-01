@@ -139,9 +139,15 @@ class NXErr:
         0x251002: 'Invalid [NAX0](http://switchbrew.org/index.php?title=NAX0) magicnum.',
         0x2EE202: 'Unknown media-id',
         0x2EE602: 'Path too long',
+        0x7E12B: 'Can\'t connect to eshop - Often because of DNS!',
+        0x39D689: 'You\'re CDN banned!',
+        0x3E8E7C: 'Login/Creation of new account - Often because of DNS!',
+        0x3E8EA0: 'Caused by failed connection test - Often because of DNS!',
+        0x1F4E7C: 'Your console has been banned',
         0x2F5A02: 'Offset outside storage',
         0x313802: 'Operation not supported',
         0x320002: 'Permission denied',
+        0x3E8E89: 'You can\'t access Firmware Updates - Often because of DNS!',
         0x3CF089: 'Unknown/invalid libcurl error.',
     }
 
