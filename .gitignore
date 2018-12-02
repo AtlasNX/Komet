@@ -12,3 +12,5 @@ venv/
 data.txt
 grabber.py
 data.py
+addons/gen.py
+addons/Error.py
