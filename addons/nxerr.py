@@ -520,6 +520,7 @@ class NXErr:
         0x3E8E7C: 'Account Login/Creation - Often because of DNS!',
         0x3E8EA0: 'Failed connection test - Often because of DNS!',
         0x1F4E7C: '(normal) console ban',
+        0x27EE7C: '(potential) complete account ban', # This error is still super new, needs more informations
         # 0x3E8E89: 'Failed to access Firmware Updates - Often because of DNS!',
         # ^ Also used by libcurl
     }
