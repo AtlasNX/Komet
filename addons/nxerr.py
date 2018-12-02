@@ -614,6 +614,10 @@ class NXErr:
         0x27EE7C: '(potential) complete account ban', # This error is still super new, needs more informations
         # 0x3E8E89: 'Failed to access Firmware Updates - Often because of DNS!',
         # ^ Also used by libcurl
+
+        # Atmosphere
+
+        0xCAFEF: "Atmosphere: Version Mismatch",
     }
 
     known_errcode_ranges = {
