@@ -14,3 +14,5 @@ grabber.py
 data.py
 addons/gen.py
 addons/Error.py
+addons/error_codes.py
+addons/utils/codes2json.py
