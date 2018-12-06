@@ -29,41 +29,6 @@ os.chdir(dir_path)
 config = configparser.ConfigParser()
 config.read("config.ini")
 
-os.makedirs("data", exist_ok=True)
-# create warnsv2.json if it doesn't exist, and convert warns.json if needed
-if not os.path.isfile("data/warnsv2.json"):
-    if os.path.isfile("data/warns.json"):
-        print("Converting warns.json to warnsv2 format")
-        with open("data/warns.json", "r") as f:
-            warns = json.load(f)
-        warnsv2 = {}
-        for user_id, info in warns.items():
-            warnsv2[user_id] = {"name": info["name"], "warns": []}
-            for w_idx in range(len(info["warns"])):
-                warnsv2[user_id]["warns"].append(info["warns"][str(w_idx + 1)])
-        with open("data/warnsv2.json", "w") as f:
-            json.dump(warnsv2, f)
-    else:
-        with open("data/warnsv2.json", "w") as f:
-            f.write("{}")
-
-# create restrictions.json if it doesn't exist
-if not os.path.isfile("data/restrictions.json"):
-    with open("data/restrictions.json", "w") as f:
-        f.write("{}")
-
-
-# create helpers.json if it doesn't exist
-if not os.path.isfile("data/helpers.json"):
-    with open("data/helpers.json", "w") as f:
-        f.write("{}")
-
-# create timebans.json if it doesn't exist
-if not os.path.isfile("data/timebans.json"):
-    with open("data/timebans.json", "w") as f:
-        f.write("{}")
-
-
 prefix = ['!', '.']
 bot = commands.Bot(command_prefix=prefix, description=description, pm_help=None)
 
@@ -110,93 +75,16 @@ async def on_ready():
         return
     # this bot should only ever be in one server anyway
     for server in bot.servers:
-        print("{} has started! {} has {:,} members!".format(bot.user.name, server.name, server.member_count))
+        print("{} has started!".format(bot.user.name))
         bot.server = server
-
         bot.config = config
-
-        # channels
-        bot.welcome_channel = discord.utils.get(server.channels, name="welcome")
-        bot.announcements_channel = discord.utils.get(server.channels, name="announcements")
-        bot.mods_channel = discord.utils.get(server.channels, name="mod-chat")
-        bot.modlogs_channel = discord.utils.get(server.channels, name="mod-warnings")
-        bot.serverlogs_channel = discord.utils.get(server.channels, name="mod-log")
-
-        bot.community_channels = (
-            discord.utils.get(server.channels, name="developer-chat"),
-            discord.utils.get(server.channels, name="scene-showcase"),
-        )
-
-        # TODO: remove some of these roles that are useless on Reswitched. need to find their use around the bot first.
-        # roles
-        bot.staff_role = discord.utils.get(server.roles, name="Secmon")
-        bot.halfop_role = discord.utils.get(server.roles, name="Creport")
-        bot.op_role = discord.utils.get(server.roles, name="Creport")
-        bot.superop_role = discord.utils.get(server.roles, name="Creport")
-        bot.owner_role = discord.utils.get(server.roles, name="Secmon")
-        bot.muted_role = discord.utils.get(server.roles, name="Muted")
-        bot.nohelp_role = discord.utils.get(server.roles, name="Creport")
-        bot.nomemes_role = discord.utils.get(server.roles, name="No-Memes")
-        bot.noembed_role = discord.utils.get(server.roles, name="No-Embed")
-        bot.team_role = discord.utils.get(server.roles, name="Secmon")
-
-        bot.private_role = discord.utils.get(server.roles, name="Secmon")
-        bot.hacker_role = discord.utils.get(server.roles, name="TSEC")
-        bot.community_role = discord.utils.get(server.roles, name="Jpegdec")
-        bot.bot_management_role = discord.utils.get(server.roles, name='Secmon')
-        bot.everyone_role = server.default_role
-
-        bot.staff_ranks = {
-            "Creport": bot.halfop_role,
-            "Creport": bot.op_role,
-            "Creport": bot.superop_role,
-            "Secmon": bot.owner_role,
-        }
-
-        # load timebans
-        with open("data/timebans.json", "r") as f:
-            timebans = json.load(f)
-        bot.timebans = {}
-        timebans_i = copy.copy(timebans)
-        for user_id, timestamp in timebans_i.items():
-            found = False
-            for user in await bot.get_bans(server):
-                if user.id == user_id:
-                    bot.timebans[user_id] = [user, datetime.datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S"), False]  # last variable is "notified", for <=30 minute notifications
-                    found = True
-                    break
-            if not found:
-                timebans.pop(user_id) # somehow not in the banned list anymore so let's just remove it
-        with open("data/timebans.json", "w") as f:
-            json.dump(timebans, f)
-
         bot.all_ready = True
         bot._is_all_ready.set()
 
-        msg = "{} has started! {} has {:,} members!".format(bot.user.name, server.name, server.member_count)
-        if len(failed_addons) != 0:
-            msg += "\n\nSome addons failed to load:\n"
-            for f in failed_addons:
-                msg += "\n{}: `{}: {}`".format(*f)
-        await bot.send_message(bot.serverlogs_channel, msg)
-
-
-        break
-
 # loads extensions
 addons = [
-    'addons.events',
-    'addons.extras',
-    'addons.kickban',
-    'addons.load',
-    'addons.lockdown',
-    'addons.logs',
-    'addons.loop',
-    'addons.mod',
-    'addons.links',
     'addons.err',
     'addons.nxerr',
-    'addons.mod_warn'
 ]
 
 failed_addons = []
