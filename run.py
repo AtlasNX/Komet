@@ -5,7 +5,7 @@
 # https://github.com/916253/Kurisu
 
 description = """
-Robocop, the moderation bot of ReSwitched.
+Komet, the bot of AtlasNX.
 """
 
 # import dependencies
