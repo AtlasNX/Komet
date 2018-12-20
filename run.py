@@ -5,7 +5,7 @@
 # https://github.com/916253/Kurisu
 
 description = """
-Robocop, the moderation bot of ReSwitched.
+Komet, the bot of AtlasNX
 """
 
 # import dependencies
@@ -96,6 +96,6 @@ for extension in addons:
         print('{} failed to load.\n{}: {}'.format(extension, type(e).__name__, e))
         failed_addons.append([extension, type(e).__name__, e])
 
-# Execute
+# Execute (order 66)
 print('Bot directory: ', dir_path)
 bot.run(config['Main']['token'])
