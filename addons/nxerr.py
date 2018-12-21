@@ -570,6 +570,7 @@ class NXErr:
         0x5759: "LibnxError_ApmFailedToInitialize",
         0x5959: "LibnxError_NvinfoFailedToInitialize",
         0x5B59: "LibnxError_NvbufFailedToInitialize",
+        0x5D59: "LibnxError_LibAppletBadExit",
 
         # - Libnx Binder -
         0x35D: "LibnxBinderError_Unknown",
