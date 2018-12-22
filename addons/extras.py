@@ -22,7 +22,7 @@ class Extras:
         """About the bot"""
         embed = discord.Embed(title="About:", color=discord.Color.green(), url="https://github.com/AtlasNX/Kurisu-AtlasNX")
         embed.set_author(name="")
-        embed.set_thumbnail(url="http://i.imgur.com/0iDmGQa.png")
+        embed.set_thumbnail(url="https://i.imgur.com/kuE7nIR.png")
         embed.description = "Based off of Kurisu (ReSwitched Edition) by 916253 and ihaveamac"
         await self.bot.say("", embed=embed)
 
