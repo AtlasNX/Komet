@@ -684,6 +684,12 @@ class NXErr:
         ],
     }
 
+    # Game Erros - Strings because Nintendo decided that it would be useless to put them into normal ints ;^)
+    # Attention: These need to be formatted -> <errcode>: "<game>: <description>"
+    game_err = {
+        "2-AAB6A-3400": "Splatoon 2: A kick from online due to exefs edits.",
+    }
+
     def get_name(self, d, k):
         if k in d:
             return '{} ({})'.format(d[k], k)
@@ -700,7 +706,14 @@ class NXErr:
           .serr 0xDC05
           .serr 2005-0110
         """
-        if re.match('[0-9][0-9][0-9][0-9]\-[0-9][0-9][0-9][0-9]', err):
+
+        # Game Errors because they are special
+        if err in self.game_err:
+            game,desc = self.game_err[err].split(":")
+            await self.bot.say(embed=discord.Embed(title="Game Error Code", description="**Description:** {} \n \n **Game:** {}".format(desc, game)))
+            return
+        # Normal Errors that follow the standard guidelines
+        elif re.match('[0-9][0-9][0-9][0-9]\-[0-9][0-9][0-9][0-9]', err):
             module = int(err[0:4]) - 2000
             desc = int(err[5:9])
             errcode = (desc << 9) + module
