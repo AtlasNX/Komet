@@ -1,4 +1,15 @@
 [Main]
 token = 
+; server_id = # Currently needs to be edited within run.py at line 112
+admin_role = 
+mod_role = 
+community_role = 
+dev_role = 
+muted_role = 
+serverlogs_channel = 
+modlogs_channel = 
+mods_channel = 
+announcements_channel = 
+welcome_channel = 
 [Probate]
 phrases = something1,... ; must be 12 long, no spaces inbetween
