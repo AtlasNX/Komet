@@ -759,7 +759,7 @@ class NXErr:
           .serr 2005-0110
         """
         # Normal Errors that follow the standard guidelines
-        if re.match('[0-9][0-9][0-9][0-9]\-[0-9][0-9][0-9][0-9]', err):
+        if re.match(r'2\d{3}\-\d{4}', err):
             module = int(err[0:4]) - 2000
             desc = int(err[5:9])
             errcode = (desc << 9) + module
@@ -794,8 +794,8 @@ class NXErr:
 
     @commands.command(pass_context=True)
     async def err2hex(self, ctx, err: str):
-        if not re.match('[0-9][0-9][0-9][0-9]\-[0-9][0-9][0-9][0-9]', err):
-            await self.bot.say('Does not follow XXXX-XXXX format')
+        if re.match(r'2\d{3}\-\d{4}', err):
+            await self.bot.say("The error doesn\'t follow the standard Switche error format of 2XXX-XXXX")
         else:
             module = int(err[0:4]) - 2000
             desc = int(err[5:9])
